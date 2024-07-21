@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/provider/cart_provider.dart';
 import 'package:flutter_ecommerce_app/utils/app_colors.dart';
+import 'package:flutter_ecommerce_app/utils/app_routes.dart';
 import 'package:flutter_ecommerce_app/views/widgets/cart_item_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dash/flutter_dash.dart';
@@ -12,11 +13,13 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
     final size = MediaQuery.of(context).size;
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (cartProvider.state == CartState.initial) {
         cartProvider.loadCartData();
       }
     });
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -43,6 +46,7 @@ class CartPage extends StatelessWidget {
             Dash(
               length: size.width - 32,
               dashLength: 12,
+              dashColor: AppColors.gray,
             ),
             const SizedBox(height: 16),
             buildCartTotalAndSubtotalItem(
@@ -54,7 +58,10 @@ class CartPage extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context, rootNavigator: true)
+                            .pushNamed(AppRoutes.payment);
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).primaryColor,
                           foregroundColor: AppColors.white),
