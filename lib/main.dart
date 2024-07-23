@@ -3,6 +3,7 @@ import 'package:flutter_ecommerce_app/provider/cart_provider.dart';
 import 'package:flutter_ecommerce_app/provider/category_provider.dart';
 import 'package:flutter_ecommerce_app/provider/home_provider.dart';
 import 'package:flutter_ecommerce_app/provider/payment_provider.dart';
+import 'package:flutter_ecommerce_app/utils/app_colors.dart';
 import 'package:flutter_ecommerce_app/utils/app_router.dart';
 import 'package:flutter_ecommerce_app/utils/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,36 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
+          inputDecorationTheme: InputDecorationTheme(
+            fillColor: AppColors.gray2,
+            filled: true,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(color: AppColors.gray1),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(color: AppColors.gray1),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(color: AppColors.gray1),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: AppColors.red),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(color: AppColors.red),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(color: AppColors.gray1),
+            ),
+          ),
         ),
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.login,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );

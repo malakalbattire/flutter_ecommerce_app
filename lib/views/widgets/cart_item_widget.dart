@@ -27,7 +27,7 @@ class CartItemWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                   child: CachedNetworkImage(
                     imageUrl: productItem.imgUrl,
-                    height: 150.0, // Set a fixed height
+                    height: 150.0,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

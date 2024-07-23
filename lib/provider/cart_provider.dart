@@ -5,7 +5,6 @@ enum CartState { initial, loading, loaded, error }
 
 class CartProvider with ChangeNotifier {
   List<ProductItemModel> _cartItems = [];
-  //final double subtotal;
   CartState _state = CartState.initial;
   String _errorMessage = '';
 

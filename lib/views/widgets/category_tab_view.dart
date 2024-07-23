@@ -1,36 +1,3 @@
-// import 'package:flutter/material.dart';
-// import '../../models/category_model.dart';
-//
-// class CategoryTabView extends StatelessWidget {
-//   const CategoryTabView({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//       child: Column(
-//         children: [
-//           GestureDetector(
-//             onTap: () {},
-//             child: ClipRRect(
-//               borderRadius: BorderRadius.circular(16),
-//               child: SizedBox(
-//                 height:
-//                     MediaQuery.of(context).size.height, // Constrain the height
-//                 child: ListView.builder(
-//                   shrinkWrap: true,
-//                   itemCount: dummyCategories.length,
-//                   itemBuilder: dummyCategories.map((category) {
-//                     return category.imgUrl;
-//                   }),
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_ecommerce_app/provider/category_provider.dart';

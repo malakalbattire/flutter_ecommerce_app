@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/utils/app_colors.dart';
+import 'package:flutter_ecommerce_app/views/widgets/payment_model_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../../provider/payment_provider.dart';
 import '../widgets/product_item_payment_widget.dart';
@@ -78,7 +79,10 @@ class PaymentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8.0),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => showModalBottomSheet(
+                    context: context,
+                    builder: (context) => const PaymentModelBottomSheet(),
+                  ),
                   child: Container(
                     width: double.infinity,
                     height: 100,
@@ -111,17 +115,17 @@ class PaymentPage extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 buildTotalAmount(context, paymentProvider.total),
                 const SizedBox(height: 16.0),
-
                 SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Theme.of(context).primaryColor,
-                            foregroundColor: AppColors.white),
-                        child: Text('Checkout Now'))),
-
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        foregroundColor: AppColors.white),
+                    child: Text('Checkout Now'),
+                  ),
+                ),
                 const SizedBox(height: 80.0),
               ]
             ],

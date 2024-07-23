@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/utils/app_routes.dart';
+import 'package:flutter_ecommerce_app/views/pages/add_payment_card.dart';
 import 'package:flutter_ecommerce_app/views/pages/custom_bottom_navbar.dart';
+import 'package:flutter_ecommerce_app/views/pages/login_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/my_orders_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/payment_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/product_details_page.dart';
@@ -28,9 +30,24 @@ class AppRouter {
           ),
           settings: settings,
         );
+
+      case AppRoutes.addPaymentCard:
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider.value(
+            value: Provider.of<CartProvider>(_, listen: false),
+            child: AddPaymentCard(),
+          ),
+          settings: settings,
+        );
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (_) => CustomBottomNavbar(),
+          settings: settings,
+        );
+
+      case AppRoutes.login:
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(),
           settings: settings,
         );
       default:
