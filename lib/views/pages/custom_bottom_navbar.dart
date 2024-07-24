@@ -17,12 +17,12 @@ class CustomBottomNavbar extends StatefulWidget {
 }
 
 class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
-  late final PersistentTabController _controller;
+  // late final PersistentTabController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController();
+    // _controller = PersistentTabController();
   }
 
   @override

@@ -30,30 +30,26 @@ class FavoritesPage extends StatelessWidget {
               else if (favoriteProvider.state == FavoritesState.error)
                 Text('Error: ${favoriteProvider.errorMessage}')
               else ...[
-                Container(
-                  child: GridView.builder(
-                    itemCount: favoriteProvider.favoritesProducts.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 18,
-                    ),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () => Navigator.of(
-                        context,
-                        // rootNavigator: true,
-                      ).pushNamed(AppRoutes.productDetails),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.gray1,
-                            borderRadius: BorderRadius.circular(16)),
-                        child: ProductItem(
-                          productItem:
-                              favoriteProvider.favoritesProducts[index],
-                        ),
+                GridView.builder(
+                  itemCount: favoriteProvider.favoritesProducts.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 18,
+                  ),
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: () => Navigator.of(
+                      context,
+                      // rootNavigator: true,
+                    ).pushNamed(AppRoutes.productDetails),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.gray1,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: ProductItem(
+                        productItem: favoriteProvider.favoritesProducts[index],
                       ),
                     ),
                   ),
