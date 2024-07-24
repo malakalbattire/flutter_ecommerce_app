@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/provider/cart_provider.dart';
 import 'package:flutter_ecommerce_app/provider/category_provider.dart';
 import 'package:flutter_ecommerce_app/provider/home_provider.dart';
+import 'package:flutter_ecommerce_app/provider/login_provider.dart';
 import 'package:flutter_ecommerce_app/provider/payment_provider.dart';
+import 'package:flutter_ecommerce_app/provider/register_provider.dart';
+import 'package:flutter_ecommerce_app/services/auth_services.dart';
 import 'package:flutter_ecommerce_app/utils/app_colors.dart';
 import 'package:flutter_ecommerce_app/utils/app_router.dart';
 import 'package:flutter_ecommerce_app/utils/app_routes.dart';
@@ -26,6 +29,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => PaymentProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

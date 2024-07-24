@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-abstract class AppAuth {
+abstract class AuthServices {
   Future<bool> login(String email, String password);
   Future<bool> register(String email, String password);
   Future<void> logout();
@@ -8,7 +8,7 @@ abstract class AppAuth {
   Future<User?> getUser();
 }
 
-class AppAuthImplementation implements AppAuth {
+class AuthServicesImpl implements AuthServices {
   final _firebaseAuth = FirebaseAuth.instance;
 
   @override
