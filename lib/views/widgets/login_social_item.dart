@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/utils/app_colors.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginSocialItem extends StatelessWidget {
   final IconData icon;

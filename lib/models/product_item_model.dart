@@ -62,6 +62,7 @@ List<ProductItemModel> dummyProducts = [
     isAddedToCart: true,
     quantity: 2,
     size: Size.L,
+    isFavorite: true,
   ),
   const ProductItemModel(
     id: '2',
@@ -70,6 +71,7 @@ List<ProductItemModel> dummyProducts = [
         'https://i.pinimg.com/564x/cc/09/26/cc09269ddc96e7900392d8aeba67f5af.jpg',
     price: 30,
     category: 'snakes',
+    isFavorite: true,
   ),
   const ProductItemModel(
     id: '3',
@@ -97,6 +99,7 @@ List<ProductItemModel> dummyProducts = [
     isAddedToCart: true,
     quantity: 3,
     size: Size.S,
+    isFavorite: true,
   ),
   const ProductItemModel(
     id: '6',

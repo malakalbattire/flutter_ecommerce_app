@@ -4,17 +4,19 @@ import 'package:flutter_ecommerce_app/utils/app_routes.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/login_social_item.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegistrationPageState extends State<RegistrationPage> {
   late final GlobalKey<FormState> _formKey;
-  late final TextEditingController _emailController, _passwordController;
-  late FocusNode _emailFocusNode, _passwordFocusNode;
+  late final TextEditingController _usernameController,
+      _emailController,
+      _passwordController;
+  late FocusNode _usernameFocusNode, _emailFocusNode, _passwordFocusNode;
   bool visibility = false;
 
   @override
@@ -23,22 +25,25 @@ class _LoginPageState extends State<LoginPage> {
     _formKey = GlobalKey<FormState>();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _usernameController = TextEditingController();
+    _usernameFocusNode = FocusNode();
     _emailFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
+    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
-  void login() {
+  void register() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Login Success!'),
+          content: Text('Register Success!'),
         ),
       );
       Navigator.pushNamed(context, AppRoutes.home);
@@ -59,18 +64,48 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 36),
                   Text(
-                    'Login Account',
+                    'Create Account',
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    'Please, login with registered account!',
+                    "Let's, create your account",
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
                         .copyWith(color: AppColors.gray),
+                  ),
+                  const SizedBox(height: 36),
+                  Text(
+                    'Username',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 12),
+                  TextFormField(
+                    controller: _usernameController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your username';
+                      } else {
+                        return null;
+                      }
+                    },
+                    focusNode: _usernameFocusNode,
+                    textInputAction: TextInputAction.next,
+                    onEditingComplete: () {
+                      _usernameFocusNode.unfocus();
+                      FocusScope.of(context).requestFocus(_emailFocusNode);
+                    },
+                    decoration: const InputDecoration(
+                      hintText: 'Create your username',
+                      prefixIcon: Icon(Icons.person),
+                      prefixIconColor: AppColors.gray,
+                    ),
                   ),
                   const SizedBox(height: 36),
                   Text(
@@ -119,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     focusNode: _passwordFocusNode,
                     onEditingComplete: () {
                       _passwordFocusNode.unfocus();
-                      login();
+                      register();
                     },
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -147,34 +182,17 @@ class _LoginPageState extends State<LoginPage> {
                       suffixIconColor: AppColors.gray,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox.shrink(),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forgot Password?',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(color: Theme.of(context).primaryColor),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 48),
                   SizedBox(
                     width: double.infinity,
                     height: 60,
                     child: ElevatedButton(
-                      onPressed: login,
+                      onPressed: register,
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).primaryColor,
                           foregroundColor: AppColors.white),
                       child: Text(
-                        'Login ',
+                        'Create Account ',
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall!
@@ -199,41 +217,17 @@ class _LoginPageState extends State<LoginPage> {
                   LoginSocialItem(
                     color: AppColors.red,
                     icon: FontAwesomeIcons.google,
-                    title: 'Login with Google ',
+                    title: 'Sign In with Google ',
                     onTap: () {},
                   ),
                   const SizedBox(height: 16.0),
                   LoginSocialItem(
                     color: AppColors.blue,
                     icon: FontAwesomeIcons.facebookF,
-                    title: 'Login with Facebook',
+                    title: 'Sign In with Facebook',
                     onTap: () {},
                   ),
                   const SizedBox(height: 16.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have an account ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: AppColors.gray),
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, AppRoutes.register);
-                          },
-                          child: Text(
-                            'Register',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                    color: Theme.of(context).primaryColor),
-                          )),
-                    ],
-                  ),
                   SizedBox(
                     height: 80,
                   ),

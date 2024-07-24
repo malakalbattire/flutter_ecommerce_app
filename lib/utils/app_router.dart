@@ -6,6 +6,7 @@ import 'package:flutter_ecommerce_app/views/pages/login_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/my_orders_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/payment_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/product_details_page.dart';
+import 'package:flutter_ecommerce_app/views/pages/registration_page.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/cart_provider.dart';
@@ -42,6 +43,11 @@ class AppRouter {
       case AppRoutes.home:
         return MaterialPageRoute(
           builder: (_) => CustomBottomNavbar(),
+          settings: settings,
+        );
+      case AppRoutes.register:
+        return MaterialPageRoute(
+          builder: (_) => RegistrationPage(),
           settings: settings,
         );
 

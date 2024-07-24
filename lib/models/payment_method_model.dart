@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class PaymentMethodModel {
   final String id;
   final String cardNumber;

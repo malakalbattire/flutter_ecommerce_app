@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/provider/cart_provider.dart';
+import 'package:flutter_ecommerce_app/provider/favorites_provider.dart';
 import 'package:flutter_ecommerce_app/views/pages/cart_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/favorites_page.dart';
 import 'package:flutter_ecommerce_app/views/pages/home_page.dart';
@@ -91,7 +92,10 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
             ),
           ),
           PersistentTabConfig(
-            screen: FavoritesPage(),
+            screen: ChangeNotifierProvider(
+              create: (_) => FavoritesProvider(),
+              child: FavoritesPage(),
+            ),
             item: ItemConfig(
               icon: const Icon(Icons.favorite_border),
               title: "Favorite",

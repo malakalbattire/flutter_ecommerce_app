@@ -16,7 +16,6 @@ class PaymentItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PaymentProvider>(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: DecoratedBox(
